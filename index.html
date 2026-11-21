@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpendWise Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- Sidebar / navigation -->
+    <aside class="sidebar">
+      <p class="logo">SpendWise</p>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a class="nav-link active" href="#">Dashboard</a></li>
+          <li><a class="nav-link" href="#">Expenses</a></li>
+          <li><a class="nav-link" href="#">Budgets</a></li>
+          <li><a class="nav-link" href="#">Reports</a></li>
+          <li><a class="nav-link" href="#">Settings</a></li>
+        </ul>
+      </nav>
+
+      <p class="sidebar-note">Your expenses reset when you refresh the page.</p>
+    </aside>
+
+    <!-- Header -->
+    <header class="topbar">
+      <div>
+        <h1>Dashboard</h1>
+        <p class="subtitle">November 2026 overview</p>
+      </div>
+      <div class="topbar-actions">
+        <button type="button" class="btn" id="header-add-btn">Add expense</button>
+        <span class="avatar" aria-label="Signed in as Mercy">M</span>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="content">
+
+      <section class="summary" aria-label="Monthly summary">
+        <div class="stat">
+          <span class="stat-label">Total budget</span>
+          <span class="stat-value" id="total-budget">$0.00</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Spent so far</span>
+          <span class="stat-value" id="total-spent">$0.00</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Remaining</span>
+          <span class="stat-value" id="remaining-balance">$0.00</span>
+        </div>
+      </section>
+
+      <h2 class="section-title">Spending by category</h2>
+
+      <!-- Category cards are created by script.js -->
+      <section class="cards" id="category-cards" aria-label="Category cards"></section>
+
+      <section class="panels">
+
+        <!-- Add expense form -->
+        <div class="panel">
+          <h2>Add expense</h2>
+
+          <form id="expense-form" novalidate>
+            <div class="form-field">
+              <label for="expense-name">Expense name</label>
+              <input type="text" id="expense-name" name="expense-name" placeholder="e.g. Groceries">
+            </div>
+
+            <div class="form-field">
+              <label for="expense-amount">Amount</label>
+              <input type="number" id="expense-amount" name="expense-amount" min="0" step="0.01" placeholder="e.g. 25.00">
+            </div>
+
+            <div class="form-field">
+              <label for="expense-category">Category</label>
+              <select id="expense-category" name="expense-category">
+                <option value="Food">Food</option>
+                <option value="Transport">Transport</option>
+                <option value="Rent">Rent</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Savings">Savings</option>
+                <option value="Utilities">Utilities</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="expense-date">Date</label>
+              <input type="date" id="expense-date" name="expense-date">
+            </div>
+
+            <button type="submit" class="btn">Save expense</button>
+          </form>
+
+          <p id="message" class="message" role="status"></p>
+        </div>
+
+        <!-- Expense list is created by script.js -->
+        <div class="panel">
+          <h2>Your expenses</h2>
+          <p id="empty-state" class="empty-state">No expenses yet. Add your first one.</p>
+          <ul id="expense-list" class="expense-list"></ul>
+        </div>
+
+      </section>
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
